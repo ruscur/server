@@ -22,6 +22,7 @@
 #include "Common.h"
 #include <openssl/hmac.h>
 #include <openssl/sha.h>
+#include <openssl/opensslv.h>
 
 class BigNumber;
 
@@ -41,7 +42,7 @@ class HMACSHA1
         uint8 *GetDigest() { return (uint8*)m_digest; }
         int GetLength() { return SHA_DIGEST_LENGTH; }
     private:
-        HMAC_CTX m_ctx;
+        HMAC_CTX* m_ctx;
         uint8 m_digest[SHA_DIGEST_LENGTH];
 };
 #endif
